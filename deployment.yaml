@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-management-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: client-management
+  template:
+    metadata:
+      labels:
+        app: client-management
+    spec:
+      containers:
+      - name: client-api
+        image: your-docker-image:latest
+        ports:
+        - containerPort: 3000
+        env:
+        - name: MONGO_URI
+          value: mongodb://mongo:27017/yourdb
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: client-management-service
+spec:
+  type: ClusterIP
+  ports:
+  - port: 3000
+    targetPort: 3000
+  selector:
+    app: client-management

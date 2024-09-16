@@ -1,0 +1,37 @@
+<div class="search-client">
+    <h2>Search Client</h2>
+  
+    <!-- Search bar for inputting query -->
+    <div class="form-group">
+      <label for="search">Search Client</label>
+      <input type="text" id="search" [(ngModel)]="searchQuery" placeholder="Enter client name or email" />
+      <button (click)="onSearch()">Search</button>
+    </div>
+  
+    <!-- Results table for displaying client data -->
+    <div *ngIf="clients && clients.length > 0">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let client of clients">
+            <td>{{ client.name }}</td>
+            <td>{{ client.email }}</td>
+            <td>{{ client.phone }}</td>
+            <td>{{ client.address }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <div *ngIf="clients && clients.length === 0">
+      <p>No clients found matching your search criteria.</p>
+    </div>
+  </div>
+  

@@ -1,0 +1,30 @@
+<div class="manage-engagements">
+    <h2>Ongoing Client Engagements</h2>
+  
+    <!-- Engagements Dashboard -->
+    <table>
+      <thead>
+        <tr>
+          <th>Client Name</th>
+          <th>Engagement Title</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let engagement of engagements">
+          <td>{{ engagement.clientName }}</td>
+          <td>{{ engagement.title }}</td>
+          <td>{{ engagement.status }}</td>
+          <td>
+            <select [(ngModel)]="engagement.status" (change)="onStatusChange(engagement)">
+              <option value="active">Active</option>
+              <option value="pending">Pending</option>
+              <option value="completed">Completed</option>
+            </select>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
