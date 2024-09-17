@@ -1,0 +1,17 @@
+<div class="issue-payslips">
+    <h2>Issue Payslips</h2>
+  
+    <form (submit)="onSubmit()">
+      <div class="form-group">
+        <label for="payrollDate">Select Payroll Date</label>
+        <input type="date" id="payrollDate" [(ngModel)]="payslipCriteria.payrollDate" required />
+      </div>
+  
+      <button type="submit">Generate and Send Payslips</button>
+    </form>
+  
+    <div *ngIf="payslipsIssued">
+      <p>Payslips have been generated and sent to employees.</p>
+    </div>
+  </div>
+  

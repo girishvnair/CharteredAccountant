@@ -1,0 +1,36 @@
+<div class="calculate-payroll">
+    <h2>Calculate Payroll</h2>
+  
+    <form (submit)="onSubmit()">
+      <div class="form-group">
+        <label for="employeeName">Employee Name</label>
+        <input type="text" id="employeeName" [(ngModel)]="payroll.employeeName" required />
+      </div>
+  
+      <div class="form-group">
+        <label for="hoursWorked">Hours Worked</label>
+        <input type="number" id="hoursWorked" [(ngModel)]="payroll.hoursWorked" required />
+      </div>
+  
+      <div class="form-group">
+        <label for="hourlyRate">Hourly Rate</label>
+        <input type="number" id="hourlyRate" [(ngModel)]="payroll.hourlyRate" required />
+      </div>
+  
+      <div class="form-group">
+        <label for="taxRate">Tax Rate (%)</label>
+        <input type="number" id="taxRate" [(ngModel)]="payroll.taxRate" required />
+      </div>
+  
+      <button type="submit">Calculate</button>
+    </form>
+  
+    <div *ngIf="calculatedPayroll">
+      <h3>Payroll Summary</h3>
+      <p>Employee Name: {{ calculatedPayroll.employeeName }}</p>
+      <p>Gross Pay: {{ calculatedPayroll.grossPay | currency }}</p>
+      <p>Tax Deduction: {{ calculatedPayroll.taxDeduction | currency }}</p>
+      <p>Net Pay: {{ calculatedPayroll.netPay | currency }}</p>
+    </div>
+  </div>
+  

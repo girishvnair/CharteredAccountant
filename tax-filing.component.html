@@ -1,0 +1,25 @@
+<div class="tax-filing">
+    <h2>File Payroll Taxes</h2>
+  
+    <form (submit)="onSubmit()">
+      <div class="form-group">
+        <label for="startDate">Start Date</label>
+        <input type="date" id="startDate" [(ngModel)]="filingCriteria.startDate" required />
+      </div>
+  
+      <div class="form-group">
+        <label for="endDate">End Date</label>
+        <input type="date" id="endDate" [(ngModel)]="filingCriteria.endDate" required />
+      </div>
+  
+      <button type="submit">Calculate Tax and File</button>
+    </form>
+  
+    <div *ngIf="filingResult">
+      <h3>Tax Filing Summary</h3>
+      <p>Total Gross Pay: {{ filingResult.totalGrossPay | currency }}</p>
+      <p>Total Tax Deducted: {{ filingResult.totalTaxDeducted | currency }}</p>
+      <p>Tax Filing Status: {{ filingResult.status }}</p>
+    </div>
+  </div>
+  

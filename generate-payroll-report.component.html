@@ -1,0 +1,47 @@
+
+<div class="generate-payroll-report">
+    <h2>Generate Payroll Report</h2>
+  
+    <form (submit)="onSubmit()">
+      <div class="form-group">
+        <label for="startDate">Start Date</label>
+        <input type="date" id="startDate" [(ngModel)]="reportCriteria.startDate" required />
+      </div>
+  
+      <div class="form-group">
+        <label for="endDate">End Date</label>
+        <input type="date" id="endDate" [(ngModel)]="reportCriteria.endDate" required />
+      </div>
+  
+      <button type="submit">Generate Report</button>
+    </form>
+  
+    <div *ngIf="payrollReport && payrollReport.length > 0">
+      <h3>Payroll Report</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Employee Name</th>
+            <th>Gross Pay</th>
+            <th>Tax Deduction</th>
+            <th>Net Pay</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let payroll of payrollReport">
+            <td>{{ payroll.employeeName }}</td>
+            <td>{{ payroll.grossPay | currency }}</td>
+            <td>{{ payroll.taxDeduction | currency }}</td>
+            <td>{{ payroll.netPay | currency }}</td>
+            <td>{{ payroll.createdAt | date }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <div *ngIf="payrollReport && payrollReport.length === 0">
+      <p>No payroll records found for the selected period.</p>
+    </div>
+  </div>
+  
