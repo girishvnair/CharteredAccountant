@@ -1,0 +1,36 @@
+<div class="categorize-transaction">
+    <h2>Categorize Transactions</h2>
+  
+    <!-- Dropdown to select a category for transactions -->
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Description</th>
+          <th>Amount</th>
+          <th>Type</th>
+          <th>Category</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let transaction of transactions">
+          <td>{{ transaction.date }}</td>
+          <td>{{ transaction.description }}</td>
+          <td>{{ transaction.amount }}</td>
+          <td>{{ transaction.type }}</td>
+          <td>
+            <select [(ngModel)]="transaction.category">
+              <option value="sales">Sales</option>
+              <option value="purchase">Purchase</option>
+              <option value="salary">Salary</option>
+              <option value="utilities">Utilities</option>
+              <option value="others">Others</option>
+            </select>
+          </td>
+          <td><button (click)="updateCategory(transaction)">Update</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

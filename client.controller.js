@@ -19,7 +19,8 @@ router.post('/add-client', async (req, res) => {
     res.status(500).json({ message: 'Error adding client', error });
   }
 });
-// GET: Search for a client
+
+// GET: Search for a client with advanced filters
 router.get('/search-client', async (req, res) => {
   const { query } = req.query;
 
@@ -28,14 +29,18 @@ router.get('/search-client', async (req, res) => {
   }
 
   try {
-    // Advanced filtering options: name, email, phone
+    // Advanced filtering options: search by name, email, or phone
     const clients = await Client.find({
       $or: [
-        { name: new RegExp(query, 'i') }, // Case-insensitive search by name
+        { name: new RegExp(query, 'i') },  // Case-insensitive search by name
         { email: new RegExp(query, 'i') }, // Case-insensitive search by email
         { phone: new RegExp(query, 'i') }, // Search by phone
       ],
     });
+
+    if (!clients || clients.length === 0) {
+      return res.status(404).json({ message: 'No clients found' });
+    }
 
     res.status(200).json({ clients });
   } catch (error) {
