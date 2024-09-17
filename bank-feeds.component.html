@@ -1,0 +1,32 @@
+<div class="bank-feeds">
+    <h2>Bank Feeds Integration</h2>
+  
+    <p>Click the button below to sync transactions from your bank account:</p>
+  
+    <button (click)="syncBankFeeds()">Sync Bank Transactions</button>
+  
+    <div *ngIf="bankTransactions.length > 0">
+      <h3>Imported Transactions</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Type</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let transaction of bankTransactions">
+            <td>{{ transaction.date }}</td>
+            <td>{{ transaction.description }}</td>
+            <td>{{ transaction.amount }}</td>
+            <td>{{ transaction.type }}</td>
+            <td>{{ transaction.status }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

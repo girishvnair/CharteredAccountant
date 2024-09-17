@@ -1,0 +1,34 @@
+<div class="reconcile-transactions">
+    <h2>Reconcile Transactions</h2>
+  
+    <!-- Table to display both ledger and bank transactions side by side -->
+    <table>
+      <thead>
+        <tr>
+          <th>Ledger Date</th>
+          <th>Ledger Description</th>
+          <th>Ledger Amount</th>
+          <th>Bank Date</th>
+          <th>Bank Description</th>
+          <th>Bank Amount</th>
+          <th>Reconciled</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let match of transactionMatches">
+          <td>{{ match.ledgerTransaction.date }}</td>
+          <td>{{ match.ledgerTransaction.description }}</td>
+          <td>{{ match.ledgerTransaction.amount }}</td>
+          <td>{{ match.bankTransaction.date }}</td>
+          <td>{{ match.bankTransaction.description }}</td>
+          <td>{{ match.bankTransaction.amount }}</td>
+          <td>{{ match.reconciled ? 'Yes' : 'No' }}</td>
+          <td>
+            <button *ngIf="!match.reconciled" (click)="markAsReconciled(match)">Mark as Reconciled</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
