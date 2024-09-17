@@ -1,3 +1,9 @@
+/*
+ * Author: Girish Venugopalan Nair
+ * Email: girishvnair@gmail.com
+ * Description: Component for calculating payroll based on user input such as hours worked, hourly rate, and tax rate.
+ * Date: <Date of creation>
+ */
 const express = require('express');
 const router = express.Router();
 const LedgerTransaction = require('../models/transaction');
